@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="David Garzón Vélez" />
+		<meta
+			name="keywords"
+			content="Desarrollo web, Diseño web, Css, Flexbox, UNAD"
+		/>
+		<meta
+			name="description"
+			content="Página que da a conocer acerca de Flexbox y CSS Grid"
+		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Flex Box, CSS Grid</title>
+		<style>
+			body,
+			html {
+				margin: 0;
+				height: 100%;
+			}
+			h1 {
+				font-size: 25px;
+				padding: 0 15px;
+				margin: 0;
+			}
+			header h1,
+			nav {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			section,
+			footer {
+				padding: 15px;
+			}
+			section {
+				overflow-x: auto;
+				height: 80%;
+				padding: 0 10vw;
+			}
+			footer {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				background-color: #ffff;
+				z-index: 1;
+				border-top: 1px solid #ddd;
+			}
+			h3 {
+				text-align: center;
+			}
+			a {
+				color: blue;
+			}
+			nav {
+				margin-left: 15px;
+			}
+			header ul {
+				list-style: none;
+				position: relative;
+				margin: 0;
+				padding-left: 0;
+			}
+			header ul li {
+				display: inline-block;
+				padding: 15px;
+			}
+			.submenu {
+				position: absolute;
+				top: 48px;
+				border-top: 0;
+				border: 1px solid black;
+				background-color: #ddd;
+				display: none;
+				padding: 10px;
+				z-index: 1;
+				margin-left: -15px;
+			}
+			.submenu li {
+				display: block;
+				border: 0;
+				background-color: #ddd;
+			}
+			header nav > ul > li:hover {
+				background-color: #c5c5c5;
+			}
+			header li:hover .submenu,
+			header li:focus .submenu {
+				display: block;
+			}
+			header {
+				border-bottom: 1px solid black;
+				background-color: #ddd;
+			}
+			.content{
+				background-color: #ddd3;
+				padding: 15px;
+				border-radius: 15px;
+			}
+			.title_article{
+				text-align: center;
+				display: block;
+			}
+			pre{
+				background-color: #ff00000f;
+    		border-radius: 20px;
+				font-style: oblique;
+				font-size: 16px;
+				font-weight: 500;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Flex Box, CSS Grid</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="../index.html">Inicio</a>
+					</li>
+					<li>
+						<a href="#">Temas</a>
+						<ul class="submenu">
+							<li><a href="#flexbox">Flex Box</a></li>
+							<li><a href="#cssgrid">CSS Grid</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Recursos digitales</a>
+						<ul class="submenu">
+							<li><a href="#recurso1">Recurso 1</a></li>
+							<li><a href="#recurso2">Recurso 2</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="">Aprendizaje</a>
+						<ul class="submenu">
+							<li><a href="#">Actividad 1</a></li>
+							<li><a href="#">Actividad 2</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#autor">Autor</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+			<h2>Propósito del sitio</h2>
+			<p>
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi,
+				quidem. Voluptatibus culpa atque aperiam ducimus possimus laudantium
+				delectus! Incidunt ab corrupti dolor sit enim reiciendis quaerat amet
+				quibusdam facilis porro?
+			</p>
+			<hr />
+			<h3 id="flexbox">Flex Box</h3>
+			<article >
+				<p>
+					En flexbox tenemos un contenedor y uno o varios hijos. El contenedor
+					es el elemento al que le vamos a indicar que se ponga en disposición
+					flex. Esto hará que todos los elementos hijo inmediatos se coloquen a
+					lo largo de un eje principal.
+				</p>
+				<p>
+					En cuanto a compatibilidad, Flexbox es actualmente compatible con los
+					navegadores web más importantes y diferentes versiones de los mismos.
+				</p>
+				<p>
+					El W3C (World Wide Web Consortium) define a esta estructura como un
+					"flujo flexible” de elementos en dirección
+					(arriba/abajo/izquierda/derecha) y tamaño (anchura/altura) según los
+					ejes principal (horizontal) y transversal (vertical).
+				</p>
+				<p style="text-align: center;">
+					<img src="./images/flexbox1.svg" alt="Definición de Flexbox">
+					<br>
+					<small>Figura 1. Definición de flexbox. Recuperado de https://www.w3.org/TR/css-flexbox-1/images/flex-direction-terms.svg</small>
+				</p>
+				<div class="content">
+					<h4>Uso de flexbox:</h4>
+					<p>
+						Para comenzar a utilizar Flexbox se añade al contenedor la propiedad "display:flex”
+						<br><br>
+						<strong class="title_article">
+							flex-direction
+						</strong>
+						<p>
+							Puede tomar 4 valores y se aplica al padre (contenedor):
+							<ul>
+								<li>
+									flex-direction:row; Los elementos se visualizan de izquierda a derecha (valor por defecto, similar al ejemplo 1)
+								</li>
+								<li>
+									flex-direction:row-reverse; Los elementos se visualizan de derecha a izquierda.
+								</li>
+								<li>
+									flex-direction:column; Los elementos se visualizan de arriba hacia abajo.
+								</li>
+								<li>
+									flex-direction:column-reverse; Los elementos se visualizan de abajo hacia arriba.
+								</li>
+							</ul>
+							<strong>Por ejemplo:</strong>
+							<p style="text-align: center;">
+								<img src="./images/flex1.png" alt="Flexbox 1">
+								<br>
+								<small>Figura 2. Dirección en flexbox. Autoría propia</small>
+							</p>
+						</p>
+						<br>
+						<strong class="title_article">
+							flex-wrap
+						</strong>
+						<p>
+							Cuyo valor afecta a cómo se distribuyen los elementos en fila y, por consiguiente, a su tamaño. Los posibles valores son:
+							<ul>
+								<li>
+									flex-wrap:nowrap; Los elementos se muestran en línea, en una sola fila, y su tamaño se ajusta al contenedor siempre y cuando la suma de todos ellos sea mayor o igual que el 100% de la anchura del contenedor. Si es inferior, se siguen mostrando en línea pero conservan su tamaño. Este es el valor por defecto, y como veíamos en el ejemplo 1, aunque la anchura de los elementos es el 25% del contenedor, todos se muestran en línea modificando su tamaño para que la suma total no sea superior al 100% de su contenedor.
+								</li>
+								<li>
+									flex-wrap:wrap; Los elementos se muestran en línea, pero si su anchura supera la del contenedor, se distribuyen en varias filas.
+								</li>
+								<li>
+									flex-wrap:wrap-reverse; Los elementos se muestran en línea, pero si su anchura supera la del contenedor, se distribuyen en varias filas, y además lo hacen en orden inverso al de maquetación.
+								</li>
+							</ul>
+							<strong>Por ejemplo:</strong>
+							<p style="text-align: center;">
+								<img src="./images/flex2.png" alt="Flexbox 2">
+								<br>
+								<small>Figura 3. Distribución en flexbox. Autoría propia</small>
+							</p>
+						</p>
+						<br>
+						<strong class="title_article">
+							flex-flow
+						</strong>
+						<p>
+							Se pueden especificar las anteriores propiedades en una sola mediante "flex-flow” de la siguiente forma:
+							<br>
+							<strong>flex-flow: flex-direction flex-wrap</strong>
+							<br><br>
+							<strong>Por ejemplo:</strong>
+							<pre>
+								<code>
+									.contenedor{
+										display:flex;
+										flex-flow:row-reverse wrap-reverse;
+									}
+								</code>
+							</pre>
+						</p>
+						<br>
+						<strong class="title_article">
+							justify-content
+						</strong>
+						<p>
+							En cuanto a la alineación horizontal de los elementos en Flexbox, existe la propiedad "justify-content", que alinea los elementos a lo largo del eje principal (main axis) de su contenedor, pero a diferencia de la alineación de un texto.
+							<ul>
+								<li>
+									justify-content:flex-start; Alinea los elementos en horizontal desde el inicio de la dirección del eje principal de su contenedor (partiendo desde el inicio de la línea). Este es el valor por defecto. Es importante destacar que, como veremos más adelante, la dirección establecida en "flex-direction” afecta a la alineación.
+								</li>
+								<li>
+									justify-content:flex-end; Alinea los elementos en horizontal desde el final de la dirección del eje principal de su contenedor (partiendo desde el final de la línea)
+								</li>
+								<li>
+									justify-content:center; Alinea los elementos al centro del eje principal de su contenedor. Similar a un texto alineado al centro.
+								</li>
+								<li>
+									justify-content:space-between; Alinea los elementos justificándolos a lo largo del eje principal de su contenedor. Similar a un texto justificado. Los elementos laterales se pegan a los extremos y el resto se distribuyen a lo largo del eje principal dejando el mismo espacio entre ellos.
+								</li>
+								<li>
+									justify-content:space-around; Alinea los elementos distribuyendo sus centros de forma horizontal a lo largo del eje principal de su contenedor, dejando el mismo espacio lateral de separación al comienzo, al final y entre ellos.
+								</li>
+							</ul>
+							<strong>Por Ejemplo: </strong>
+							<pre>
+								<code>
+									.contenedor{
+										display:flex;
+										flex-direction:row;
+										flex-wrap:wrap;
+										justify-content:center;
+									}
+								</code>
+							</pre>
+							<p style="text-align: center;">
+								<img src="./images/flex3.png" alt="Flexbox 3"/>
+								<br>
+								<small>Figura 4. Justificación del contenido en flexbox. Autoría propia</small>
+							</p>
+						</p>
+						<br>
+						<strong class="title_article">
+							align-items | align-self | align-content
+						</strong>
+						<p>
+							La alineación vertical se realiza a través del llamado "eje transversal” (cross axis), y para ello se utilizan tres propiedades diferentes, "align-items”, "align-self” y "align-content”.
+							<ul>
+								<li>
+									align-items: establece la alineación predeterminada para todos los elementos del contenedor, incluidos los elementos independientes.
+								</li>
+								<li>
+									align-self: permite alinear elementos independientes del contenedor.
+								</li>
+								<li>
+									align-content: alinea las líneas/filas de elementos de un contenedor.
+								</li>
+							</ul>
+							<strong>Por Ejemplo: </strong>
+							<p style="text-align: center;">
+								<img src="./images/align.png" alt="Alineación en flexbox">
+								<br>
+								<small>Figura 5. Alineación del contenido en flexbox. Recuperado de https://www.yunbitsoftware.com/blog/wp-content/uploads/2017/03/imagen_flexbox_align.png</small>
+							</p>
+							<p>
+								<strong>A continuación se encuentran los valores que pueden tomar cada una de ellas (los valores de "align-items” son válidos para "align-self”):</strong>
+								<ul>
+									<li>
+										align-items:stretch: Valor por defecto. La altura de los elementos se ajusta al tamaño del contenedor (o fila), dividiendo el espacio sobrante entre todos los elementos por igual.
+									</li>
+									<li>
+										align-items:flex-start: Alinea en vertical los elementos desde el inicio de la dirección del eje transversal de su contenedor (al igual que ocurría en horizontal). También afecta el valor de "flex-direction” al sentido de la alineación vertical.
+									</li>
+									<li>
+										align-items:flex-end: Alinea en vertical los elementos desde el final de la dirección del eje transversal de su contenedor (al igual que ocurría en horizontal).
+									</li>
+									<li>
+										align-items:center: Alinea al centro vertical los elementos a lo largo del eje transversal de su contenedor.
+									</li>
+									<li>
+										align-items:baseline: Alinea en vertical las "líneas base” de los elementos a lo largo del eje transversal de su contenedor. Para poder comprender este ejemplo, vamos a añadir algunos estilos diferentes a los elementos:
+									</li>
+								</ul>
+							</p>
+							<p>
+								<strong>Los valores disponibles para la propiedad "align-content” son los siguientes:</strong>
+								<ul>
+									<li>
+										align-content:stretch: Valor por defecto. La altura de las filas se ajustan al tamaño del contenedor, dividiendo el espacio sobrante entre todas las líneas por igual.
+									</li>
+									<li>
+										align-content:flex-start: Alinea en vertical las filas desde el inicio de la dirección del eje transversal de su contenedor.
+									</li>
+									<li>
+										align-content:flex-end: Alinea en vertical las filas desde el final de la dirección del eje transversal de su contenedor.
+									</li>
+									<li>
+										align-content:center: Alinea al centro vertical las filas a lo largo del eje transversal de su contenedor.
+									</li>
+									<li>
+										align-content:space-between: Alinea las filas justificándolas a lo largo del eje transversal de su contenedor. Similar a un texto justificado en vertical. Las filas superior e inferior se pegan a sus extremos y el resto se distribuyen a lo largo del eje transversal dejando el mismo espacio entre ellas.
+									</li>
+									<li>
+										align-content:space-around: Alinea las líneas distribuyendo sus centros de forma vertical a lo largo del eje transversal de su contenedor, dejando el mismo espacio vertical de separación en la parte superior, inferior y entre ellos.
+									</li>
+								</ul>
+							</p>
+						</p>
+						<br>
+						<strong class="title_article">
+							order
+						</strong>
+						<p>
+							Posiciona un elemento en el orden asignado por el número entero especificado en la propiedad, teniendo en cuenta el valor asignado al resto de elementos, cuyo valor por defecto es 0 (cero). Esto significa que, a no ser que se especifique un orden a todos los elementos, cualquier número aplicado a un solo elemento lo llevará a la última posición. Esto es debido a que por defecto todos tienen cero”.
+						</p>
+						<br>
+						<strong class="title_article">
+							flex
+						</strong>
+						<p>
+							se aplica a los elementos del contenedor y que a su vez se estructura de tres propiedades diferentes y que se pueden presentar por separado, "flex- grow”, "flex-shrink” y "flex-basis”, y se define de la siguiente forma:
+							<br><br>
+							<strong>flex: none | &#60;flex-grow&#62; &#60;flex-shrink&#62; &#60;flex-basis&#62;</strong>
+							<br><br>
+							Donde:
+							<ul>
+								<li>
+									flex-grow:&#60;número&#62;: Determina el factor de incremento de tamaño de uno o varios elementos en relación al resto teniendo en cuenta el espacio "vacío” o "libre” entre ellos. Como espacio "vacío/libre” nos referimos al espacio que no ocupan los elementos en relación a su fila. Cuando este valor se omite, se establece en 1.
+									<p style="text-align: center;">
+										<img src="./images/flexgrow.jpg" alt="flex-grow">
+										<br>
+										<small>Figura 6. Ejemplo del uso de flex-grow. Recuperado de https://www.code-boost.com/img/flex-example8.jpg</small>
+									</p>
+								</li>
+								<li>
+									flex-shrink:&#60;número&#62;: Determina el factor de disminución de tamaño de uno o varios elementos en relación al resto teniendo en cuenta el espacio "vacío” o "libre” entre ellos. Cuando este valor se omite, se establece en 1.
+									<p style="text-align: center;">
+										<img src="./images/flexshrink.jpg" alt="flex-shrink">
+										<br>
+										<small>Figura 7. Ejemplo del uso de flex-shrink. Recuperado de https://www.code-boost.com/img/flex-example9.jpg</small>
+									</p>
+								</li>
+								<li>
+									flex-basis: auto | 0 | &#60;width&#62;: Especifíca la base flexible, la cual es el tamaño inicial de un elemento flexible. Ésta propiedad determina el tamaño de una caja de contenidos a no ser que se haya especificado de otra forma usando box-sizing.
+									<p style="text-align: center;">
+										<img src="./images/flexbasis.jpg" alt="flex-basis">
+										<br>
+										<small>Figura 8. Ejemplo del uso de flex-basis. Recuperado de https://www.code-boost.com/img/flex-example10.jpg</small>
+									</p>
+								</li>
+							</ul>
+							
+						</p>
+					</p>
+				</div>
+			</article>
+			<hr />
+			<h3 id="cssgrid">CSS Grid</h3>
+			<article >
+				<p>
+					Trabaja con el diseño de cuadrícula aplicando reglas CSS tanto a un elemento principal (que se convierte en el contenedor de cuadrícula) como a los elementos secundarios de ese elemento (que se convierten en elementos de cuadrícula).
+				</p>
+				<h4>Terminología de CSS Grid</h4>
+				<p>
+					<ul>
+						<li style="font-weight: bold;">Grid Container:</li>
+						El elemento al que se le aplica 'display: grid' Es el padre directo de todos los elementos de la cuadrícula. 
+						<pre>
+							<code>
+								&lt;div class="container"&gt;
+									&lt;div class="item item-1"&gt; &lt;/div&gt;
+									&lt;div class="item item-2"&gt; &lt;/div&gt;
+									&lt;div class="item item-3"&gt; &lt;/div&gt;
+								&lt;/div&gt;
+							</code>
+						</pre>
+						<li style="font-weight: bold;">Grid Item:</li>
+						Los hijos (es decir, descendientes directos) del contenedor de cuadrícula.
+						<br>
+						Para el ejemplo sólo aplican los items:
+						<pre>
+							<code>
+								&lt;div class="container"&gt;
+									&lt;div class="item"&gt;&lt;/div&gt;
+									&lt;div class="item"&gt;
+										&lt;p class="sub-item"&gt; &lt;/p&gt;
+									&lt;/div&gt;
+									&lt;div class="item"&gt; &lt;/div&gt;
+								&lt;/div&gt;
+							</code>
+						</pre>
+						<li style="font-weight: bold;">Grid Line:</li>
+						Las líneas divisorias que componen la estructura de la cuadrícula. Pueden ser verticales ("líneas de cuadrícula de columna”) u horizontales ("líneas de cuadrícula de fila”) y residir a ambos lados de una fila o columna.
+						<li style="font-weight: bold;">Grid Cell:</li>
+						El espacio entre dos filas adyacentes y dos líneas de cuadrícula de columnas adyacentes. Es una sola "unidad" de la cuadrícula. Aquí está la celda de la cuadrícula entre las líneas 1 y 2 de la cuadrícula de la fila, y las líneas de la cuadrícula de la columna 2 y 3.
+						<li style="font-weight: bold;">Grid Track:</li>
+						El espacio entre dos líneas de cuadrícula adyacentes. Puede pensar en ellos como las columnas o filas de la cuadrícula.
+						<li style="font-weight: bold;">Grid Area:</li>
+						El espacio total rodeado por cuatro líneas de cuadrícula. Un área de cuadrícula puede estar compuesta por cualquier número de celdas de cuadrícula. Aquí está el área de la cuadrícula entre las líneas 1 y 3 de la cuadrícula de las filas y las líneas 1 y 3 de la cuadrícula de la columna.
+					</ul>
+				</p>
+				<p style="text-align: center">
+					<img src="./images/gridcss.png" width="600" alt="GRID CSS Items" />
+					<br>
+					<small>Figura 9. Definición de los grid items. Autoría propia.</small>
+				</p>
+				<hr>
+				<h4>Dentro de las propiedades de CSS Grid se encuentran:</h4>
+				<strong>Propiedades del contenedor padre: </strong>
+				<p>
+					<ul>
+						<li>
+							<strong>display</strong>
+							<p>
+								Define el elemento como un contenedor de cuadrícula y establece un nuevo contexto de formato de cuadrícula para su contenido.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>grid: genera una cuadrícula a nivel de bloque</li>
+									<li>inline-grid: genera una cuadrícula de nivel en línea</li>
+								</ul>
+							</p>
+						</li>
+						<li>
+							<strong>
+								grid-template-columns y grid-template-rows
+							</strong>
+							<p>
+								Define las columnas y filas de la cuadrícula con una lista de valores separados por espacios. Los valores representan el tamaño de la pista y el espacio entre ellos representa la línea de la cuadrícula.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>&lt;track-size&gt;: Puede ser una longitud, un porcentaje o una fracción del espacio libre en la cuadrícula</li>
+									<li>&lt;line-name&gt;: Un nombre aleatorio que se desee poner</li>
+								</ul>
+							</p>
+						</li>
+						<li>
+							<strong>
+								grid-template
+							</strong>
+							<p>
+								Es una abreviatura para configurar las filas de plantilla de cuadrícula, las columnas de plantilla de cuadrícula y las áreas de la plantilla de cuadrícula en una sola declaración.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>none</li>
+									<li>&lt;grid-template-rows&gt; / &lt;grid-template-columns&gt;</li>
+								</ul>
+							</p>
+						</li>
+						<li>
+							<strong>
+								column-gap
+								<br>
+								row-gap
+								<br>
+								grid-column-gap
+								<br>
+								grid-row-gap
+							</strong>
+							<p>
+								Especifica el tamaño de las líneas de la cuadrícula. Puede pensar en ello como establecer el ancho de las canaletas entre las columnas / filas.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>line-size</li>
+								</ul>
+							</p>
+							<p style="text-align: center">
+								<img src="./images/dddgrid-gap.svg" width="350" alt="Lineas de cuadricula" />
+								<br>
+								<small>Figura 10. Líneas de cuadrícula con grid. Recuperado de https://css-tricks.com/snippets/css/complete-guide-grid/.</small>				
+							</p>
+						</li>
+						<li>
+							<strong>
+								justify-items
+							</strong>
+							<p>
+								Alinea los elementos de la cuadrícula a lo largo del eje en línea (fila). Este valor se aplica a todos los elementos de la cuadrícula dentro del contenedor.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>start</li>
+									<li>end</li>
+									<li>center</li>
+									<li>stretch </li>
+								</ul>
+							</p>
+							<pre>
+								<code>
+									.container {
+										justify-items: start | end | center | stretch;
+									}
+								</code>
+							</pre>
+						</li>
+						<li>
+							<strong>
+								align-items
+							</strong>
+							<p>
+								Alinea los elementos de la cuadrícula a lo largo del eje del bloque (columna). Este valor se aplica a todos los elementos de la cuadrícula dentro del contenedor.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>start</li>
+									<li>end</li>
+									<li>center</li>
+									<li>stretch </li>
+								</ul>
+							</p>
+							<pre>
+								<code>
+									.container {
+										align-items: start | end | center | stretch;
+									}
+								</code>
+							</pre>
+						</li>
+						<li>
+							<strong>
+								justify-content y align-content
+							</strong>
+							<p>
+								justify-content: Esta propiedad alinea la cuadrícula a lo largo del eje en línea (fila).
+								<br>
+								align-content: Esta propiedad alinea la cuadrícula a lo largo del bloque (columna).
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>start</li>
+									<li>end</li>
+									<li>center</li>
+									<li>stretch </li>
+									<li>space-around </li>
+									<li>space-between</li>
+									<li>space-evenly</li>
+								</ul>
+							</p>
+							<pre>
+								<code>
+						.container {
+							justify-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+						}
+						.container {
+							align-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+						}
+								</code>
+							</pre>
+						</li>
+						<li>
+							<strong>
+								grid
+							</strong>
+							<p>
+								Un método abreviado para establecer todas las siguientes propiedades en una sola declaración: grid-template-rows, grid-template-columnas, grid-template-areas, grid-auto-rows, grid-auto-columns y grid-auto-flow.
+							</p>
+							<pre>
+								<code>
+									.container {
+										grid: 100px 300px / 3fr 1fr;
+									}
+
+									Es equivalente a: 
+
+									.container {
+										grid-template-rows: 100px 300px;
+										grid-template-columns: 3fr 1fr;
+									}
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</p>
+				<hr>
+				<strong>Propiedades para los hijos: </strong>
+				<p>
+					<ul>
+						<li>
+							<strong>
+								grid-column-start
+								<br>
+								grid-column-end
+								<br>
+								grid-row-start
+								<br>
+								grid-row-end
+							</strong>
+							<p>
+								Determina la ubicación de un elemento de la cuadrícula dentro de la cuadrícula haciendo referencia a líneas de cuadrícula específicas. grid-column-start / grid-row-start es la línea donde comienza el elemento, y grid-column-end / grid-row-end es la línea donde termina el elemento.
+								<br>
+								<strong>Propiedades: </strong>
+								<ul>
+									<li>
+										&#60;line&#62;: Puede ser un número para referirse a una línea de cuadrícula numerada, o un nombre para referirse a una línea de cuadrícula con nombre
+									</li>
+									<li>
+										span &#60;number&#62;: El elemento se extenderá a lo largo del número proporcionado de grid tracks
+									</li>
+									<li>
+										span &#60;name&#62;: El elemento se extenderá hasta que llegue a la siguiente línea con el nombre proporcionado
+									</li>
+									<li>
+										auto: Indica colocación automática, un span automático o un span predeterminado de uno.
+									</li>
+								</ul>
+								<pre>
+									<code>
+										.item-a {
+											grid-column-start: 2;
+											grid-column-end: five;
+											grid-row-start: row1-start;
+											grid-row-end: 3;
+										}
+									</code>
+								</pre>
+							</p>
+							<p>
+								<p style="text-align: center">
+									<img src="./images/grid-column-row-start-end.svg" width="300" alt="Localización de items" />
+									<br>
+									<small>Figura 11. Localización de items. Recuperado de https://css-tricks.com/snippets/css/complete-guide-grid/.</small>
+								</p>
+							</p>
+						</li>
+						<li>
+							<strong>
+								grid-area
+							</strong>
+							<p>
+								Da un nombre a un elemento para que pueda ser referenciado por una plantilla creada con la propiedad grid-template-areas.
+							</p>
+						</li>
+						<li>
+							<strong>
+								justify-self y align-self
+							</strong>
+							<p>
+								justify-self alinea un elemento de la cuadrícula dentro de una celda a lo largo del eje en línea (fila) (a diferencia de align-self que se alinea a lo largo del eje del bloque (columna)). Este valor se aplica a un elemento de la cuadrícula dentro de una sola celda.
+							</p>
+							<strong>Propiedades: </strong>
+							<ul>
+								<li>
+									start 
+								</li>
+								<li>
+									end
+								</li>
+								<li>
+									center
+								</li>
+								<li>
+									stretch
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</article>
+			<hr />
+			<h3>Mockup de la página</h3>
+			<p style="text-align: center" id="recurso1">
+				<img src="./images/mockup1.png" alt="Mockup de la pagina principal" />
+				<br>
+				<small>Figura 12. Mockup de la página principal. Autoría propia.</small>
+			</p>
+			<p style="text-align: center" id="recurso2">
+				<img src="./images/mockup2.png" alt="Mockup de la pagina principal 2" />
+				<br>
+				<small>Figura 13. Mockup de la página principal extendido. Autoría propia.</small>
+			</p>
+			<hr />
+			<h3>Referencias bibliográficas</h3>
+			<article>
+				<ul>
+					<li>
+						Alberca C. (2018). Maquetación con flexbox. Recuperado de
+						<a
+							href="https://www.adictosaltrabajo.com/2018/02/14/maquetacion-con-flexbox/"
+							target="_blank"
+							>https://www.adictosaltrabajo.com/2018/02/14/maquetacion-con-flexbox/</a
+						>
+					</li>
+					<li>
+						CODE-BOOST. (2020). CSS Flexbox Basics. Recuperado de 
+						<a href="https://www.code-boost.com/css-flexbox/" target="_blank">
+							https://www.code-boost.com/css-flexbox/
+						</a>
+					</li>
+					<li>
+						House C. (2016). A Complete Guide to Grid. Recuperado de 
+						<a href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+							target="_blank">
+							https://css-tricks.com/snippets/css/complete-guide-grid/
+						</a>
+					</li>
+					<li>
+						Martínez J. (2017). Flexbox CSS3. Tutorial en español. Descripción y ejemplos HTML. Recuperado de 
+						<a
+							href="https://www.yunbitsoftware.com/blog/2017/03/30/flexbox-css3-tutorial-descripcion-ejemplos-html/"
+							target="_blank"
+							>https://www.yunbitsoftware.com/blog/2017/03/30/flexbox-css3-tutorial-descripcion-ejemplos-html/</a
+						>
+					</li>
+					<li>
+						Recio García, J. A. (2016). HTML5, CSS3 y JQuery: curso práctico.
+						RA-MA Editorial. Recuperado de
+						<a
+							href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/106494"
+							target="_blank"
+							>https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/106494</a
+						>
+					</li>
+				</ul>
+			</article>
+		</section>
+		<footer>
+			<p style="text-align: center; margin: 0" id="autor">
+				<span>dgarzonve@unadvirtual.edu.co</span>
+				<br />
+				<a
+					href="skype:live:dgv2411?call"
+					title="David Garz&oacute;n V&eacute;lez"
+				>
+					live:dgv2411
+				</a>
+			</p>
+		</footer>
+	</body>
+</html>
