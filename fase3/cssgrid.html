@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="author" content="David Garzón Vélez" />
+	<meta name="keywords" content="Desarrollo web, Diseño web, Css, Flexbox, UNAD" />
+	<meta name="description" content="Página que da a conocer acerca de Flexbox y CSS Grid" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CSS Grid</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina_inicio">
+	<header>
+		<h1>Flexbox, CSS Grid</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="../index.html">Inicio</a>
+				</li>
+				<li>
+					<a href="#">Temas</a>
+					<ul class="submenu">
+						<li><a href="./flexbox.html">Flexbox</a></li>
+						<li><a href="./cssgrid.html">CSS Grid</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Recursos digitales</a>
+					<ul class="submenu">
+						<li><a href="./recurso1.html">Recurso 1</a></li>
+						<li><a href="./recurso2.html">Recurso 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Aprendizaje</a>
+					<ul class="submenu">
+						<li><a href="#">Actividad 1</a></li>
+						<li><a href="#">Actividad 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="./autor.html">Autor</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="content">
+		<section>
+			<h2>CSS Grid</h2>
+			<h3>Terminología de CSS Grid</h3>
+			<p>
+			<ul>
+				<li style="font-weight: bold;">Grid Container:</li>
+				El elemento al que se le aplica 'display: grid' Es el padre directo de todos los elementos de la cuadrícula.
+				<pre>
+							<code>
+				&lt;div class="container"&gt;
+					&lt;div class="item item-1"&gt; &lt;/div&gt;
+					&lt;div class="item item-2"&gt; &lt;/div&gt;
+					&lt;div class="item item-3"&gt; &lt;/div&gt;
+				&lt;/div&gt;
+							</code>
+						</pre>
+				<li style="font-weight: bold;">Grid Item:</li>
+				Los hijos (es decir, descendientes directos) del contenedor de cuadrícula.
+				<br>
+				Para el ejemplo sólo aplican los items:
+				<pre>
+							<code>
+				&lt;div class="container"&gt;
+					&lt;div class="item"&gt;&lt;/div&gt;
+					&lt;div class="item"&gt;
+						&lt;p class="sub-item"&gt; &lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div class="item"&gt; &lt;/div&gt;
+				&lt;/div&gt;
+							</code>
+						</pre>
+				<li style="font-weight: bold;">Grid Line:</li>
+				Las líneas divisorias que componen la estructura de la cuadrícula. Pueden ser verticales ("líneas de cuadrícula
+				de columna”) u horizontales ("líneas de cuadrícula de fila”) y residir a ambos lados de una fila o columna.
+				<li style="font-weight: bold;">Grid Cell:</li>
+				El espacio entre dos filas adyacentes y dos líneas de cuadrícula de columnas adyacentes. Es una sola "unidad" de
+				la cuadrícula. Aquí está la celda de la cuadrícula entre las líneas 1 y 2 de la cuadrícula de la fila, y las
+				líneas de la cuadrícula de la columna 2 y 3.
+				<li style="font-weight: bold;">Grid Track:</li>
+				El espacio entre dos líneas de cuadrícula adyacentes. Puede pensar en ellos como las columnas o filas de la
+				cuadrícula.
+				<li style="font-weight: bold;">Grid Area:</li>
+				El espacio total rodeado por cuatro líneas de cuadrícula. Un área de cuadrícula puede estar compuesta por
+				cualquier número de celdas de cuadrícula. Aquí está el área de la cuadrícula entre las líneas 1 y 3 de la
+				cuadrícula de las filas y las líneas 1 y 3 de la cuadrícula de la columna.
+			</ul>
+			</p>
+			<p style="text-align: center">
+				<img src="../fase2/images/gridcss.png" width="600" alt="GRID CSS Items" />
+				<br>
+				<small>Figura 1. Definición de los grid items. Autoría propia.</small>
+			</p>
+			<hr>
+			<h4>Dentro de las propiedades de CSS Grid se encuentran:</h4>
+			<strong>Propiedades del contenedor padre: </strong>
+			<p>
+			<ul>
+				<li>
+					<strong>display</strong>
+					<p>
+						Define el elemento como un contenedor de cuadrícula y establece un nuevo contexto de formato de cuadrícula
+						para su contenido.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>grid: genera una cuadrícula a nivel de bloque</li>
+						<li>inline-grid: genera una cuadrícula de nivel en línea</li>
+					</ul>
+					</p>
+				</li>
+				<li>
+					<strong>
+						grid-template-columns y grid-template-rows
+					</strong>
+					<p>
+						Define las columnas y filas de la cuadrícula con una lista de valores separados por espacios. Los valores
+						representan el tamaño de la pista y el espacio entre ellos representa la línea de la cuadrícula.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>&lt;track-size&gt;: Puede ser una longitud, un porcentaje o una fracción del espacio libre en la
+							cuadrícula</li>
+						<li>&lt;line-name&gt;: Un nombre aleatorio que se desee poner</li>
+					</ul>
+					</p>
+				</li>
+				<li>
+					<strong>
+						grid-template
+					</strong>
+					<p>
+						Es una abreviatura para configurar las filas de plantilla de cuadrícula, las columnas de plantilla de
+						cuadrícula y las áreas de la plantilla de cuadrícula en una sola declaración.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>none</li>
+						<li>&lt;grid-template-rows&gt; / &lt;grid-template-columns&gt;</li>
+					</ul>
+					</p>
+				</li>
+				<li>
+					<strong>
+						column-gap
+						<br>
+						row-gap
+						<br>
+						grid-column-gap
+						<br>
+						grid-row-gap
+					</strong>
+					<p>
+						Especifica el tamaño de las líneas de la cuadrícula. Puede pensar en ello como establecer el ancho de las
+						canaletas entre las columnas / filas.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>line-size</li>
+					</ul>
+					</p>
+					<p style="text-align: center">
+						<img src="../fase2/images/dddgrid-gap.svg" width="350" alt="Lineas de cuadricula" />
+						<br>
+						<small>Figura 2. Líneas de cuadrícula con grid. Recuperado de
+							https://css-tricks.com/snippets/css/complete-guide-grid/.</small>
+					</p>
+				</li>
+				<li>
+					<strong>
+						justify-items
+					</strong>
+					<p>
+						Alinea los elementos de la cuadrícula a lo largo del eje en línea (fila). Este valor se aplica a todos los
+						elementos de la cuadrícula dentro del contenedor.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>start</li>
+						<li>end</li>
+						<li>center</li>
+						<li>stretch </li>
+					</ul>
+					</p>
+					<pre>
+								<code>
+				.container {
+					justify-items: start | end | center | stretch;
+				}
+								</code>
+							</pre>
+				</li>
+				<li>
+					<strong>
+						align-items
+					</strong>
+					<p>
+						Alinea los elementos de la cuadrícula a lo largo del eje del bloque (columna). Este valor se aplica a todos
+						los elementos de la cuadrícula dentro del contenedor.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>start</li>
+						<li>end</li>
+						<li>center</li>
+						<li>stretch </li>
+					</ul>
+					</p>
+					<pre>
+								<code>
+				.container {
+					align-items: start | end | center | stretch;
+				}
+								</code>
+							</pre>
+				</li>
+				<li>
+					<strong>
+						justify-content y align-content
+					</strong>
+					<p>
+						justify-content: Esta propiedad alinea la cuadrícula a lo largo del eje en línea (fila).
+						<br>
+						align-content: Esta propiedad alinea la cuadrícula a lo largo del bloque (columna).
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>start</li>
+						<li>end</li>
+						<li>center</li>
+						<li>stretch </li>
+						<li>space-around </li>
+						<li>space-between</li>
+						<li>space-evenly</li>
+					</ul>
+					</p>
+					<pre>
+								<code>
+.container {
+	justify-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+}
+.container {
+	align-content: start | end | center | stretch | space-around | space-between | space-evenly;    
+}
+								</code>
+							</pre>
+				</li>
+				<li>
+					<strong>
+						grid
+					</strong>
+					<p>
+						Un método abreviado para establecer todas las siguientes propiedades en una sola declaración:
+						grid-template-rows, grid-template-columnas, grid-template-areas, grid-auto-rows, grid-auto-columns y
+						grid-auto-flow.
+					</p>
+					<pre>
+								<code>
+				.container {
+					grid: 100px 300px / 3fr 1fr;
+				}
+
+				Es equivalente a: 
+
+				.container {
+					grid-template-rows: 100px 300px;
+					grid-template-columns: 3fr 1fr;
+				}
+								</code>
+							</pre>
+				</li>
+			</ul>
+			</p>
+			<hr>
+			<strong>Propiedades para los hijos: </strong>
+			<p>
+			<ul>
+				<li>
+					<strong>
+						grid-column-start
+						<br>
+						grid-column-end
+						<br>
+						grid-row-start
+						<br>
+						grid-row-end
+					</strong>
+					<p>
+						Determina la ubicación de un elemento de la cuadrícula dentro de la cuadrícula haciendo referencia a líneas
+						de cuadrícula específicas. grid-column-start / grid-row-start es la línea donde comienza el elemento, y
+						grid-column-end / grid-row-end es la línea donde termina el elemento.
+						<br>
+						<strong>Propiedades: </strong>
+					<ul>
+						<li>
+							&#60;line&#62;: Puede ser un número para referirse a una línea de cuadrícula numerada, o un nombre para
+							referirse a una línea de cuadrícula con nombre
+						</li>
+						<li>
+							span &#60;number&#62;: El elemento se extenderá a lo largo del número proporcionado de grid tracks
+						</li>
+						<li>
+							span &#60;name&#62;: El elemento se extenderá hasta que llegue a la siguiente línea con el nombre
+							proporcionado
+						</li>
+						<li>
+							auto: Indica colocación automática, un span automático o un span predeterminado de uno.
+						</li>
+					</ul>
+					<pre>
+									<code>
+					.item-a {
+						grid-column-start: 2;
+						grid-column-end: five;
+						grid-row-start: row1-start;
+						grid-row-end: 3;
+					}
+									</code>
+								</pre>
+					</p>
+					<p>
+					<p style="text-align: center">
+						<img src="../fase2/images/grid-column-row-start-end.svg" width="300" alt="Localización de items" />
+						<br>
+						<small>Figura 3. Localización de items. Recuperado de
+							https://css-tricks.com/snippets/css/complete-guide-grid/.</small>
+					</p>
+					</p>
+				</li>
+				<li>
+					<strong>
+						grid-area
+					</strong>
+					<p>
+						Da un nombre a un elemento para que pueda ser referenciado por una plantilla creada con la propiedad
+						grid-template-areas.
+					</p>
+				</li>
+				<li>
+					<strong>
+						justify-self y align-self
+					</strong>
+					<p>
+						justify-self alinea un elemento de la cuadrícula dentro de una celda a lo largo del eje en línea (fila) (a
+						diferencia de align-self que se alinea a lo largo del eje del bloque (columna)). Este valor se aplica a un
+						elemento de la cuadrícula dentro de una sola celda.
+					</p>
+					<strong>Propiedades: </strong>
+					<ul>
+						<li>
+							start
+						</li>
+						<li>
+							end
+						</li>
+						<li>
+							center
+						</li>
+						<li>
+							stretch
+						</li>
+					</ul>
+				</li>
+			</ul>
+			</p>
+			<p>
+				<strong>A continuación se presenta un video para complementar el tema:</strong>
+			</p>
+			<div class="text-center">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/QBOUSrMqlSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</section>
+		<aside>
+			<iframe
+				src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUniversidadUNAD%2F&tabs=timeline&width=400&height=560&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=314534035620750"
+				width="100%" height="560" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+				allowfullscreen="true"
+				allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+		</aside>
+	</div>
+	<footer>
+		<img src="./images/unad.png" alt="Logo UNAD">
+		<span>Flexbox y CSS Grid, David Garzón Vélez 2021</span>
+	</footer>
+</body>
+
+</html>

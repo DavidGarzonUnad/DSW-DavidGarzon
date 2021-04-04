@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="author" content="David Garzón Vélez" />
+	<meta name="keywords" content="Desarrollo web, Diseño web, Css, Flexbox, UNAD" />
+	<meta name="description" content="Página que da a conocer acerca de Flexbox y CSS Grid" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Flexbox</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina_inicio">
+	<header>
+		<h1>Flexbox, CSS Grid</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="../index.html">Inicio</a>
+				</li>
+				<li>
+					<a href="#">Temas</a>
+					<ul class="submenu">
+						<li><a href="./flexbox.html">Flexbox</a></li>
+						<li><a href="./cssgrid.html">CSS Grid</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Recursos digitales</a>
+					<ul class="submenu">
+						<li><a href="./recurso1.html">Recurso 1</a></li>
+						<li><a href="./recurso2.html">Recurso 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Aprendizaje</a>
+					<ul class="submenu">
+						<li><a href="#">Actividad 1</a></li>
+						<li><a href="#">Actividad 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="./autor.html">Autor</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="content">
+		<section>
+			<h2>Flexbox</h2>
+			<p style="text-align: center;">
+				<img src="../fase2/images/flexbox1.svg" alt="Definición de Flexbox">
+				<br>
+				<small>Figura 1. Definición de flexbox. Recuperado de
+					https://www.w3.org/TR/css-flexbox-../fase2/images/flex-direction-terms.svg</small>
+			</p>
+			<div>
+				<h4>Uso de flexbox:</h4>
+				<p>
+					Para comenzar a utilizar Flexbox se añade al contenedor la propiedad "display:flex”
+					<br><br>
+					<strong class="title_article">
+						flex-direction
+					</strong>
+				<p>
+					Puede tomar 4 valores y se aplica al padre (contenedor):
+				<ul>
+					<li>
+						flex-direction:row; Los elementos se visualizan de izquierda a derecha (valor por defecto, similar al
+						ejemplo 1)
+					</li>
+					<li>
+						flex-direction:row-reverse; Los elementos se visualizan de derecha a izquierda.
+					</li>
+					<li>
+						flex-direction:column; Los elementos se visualizan de arriba hacia abajo.
+					</li>
+					<li>
+						flex-direction:column-reverse; Los elementos se visualizan de abajo hacia arriba.
+					</li>
+				</ul>
+				<strong>Por ejemplo:</strong>
+				<p style="text-align: center;">
+					<img src="../fase2/images/flex1.png" alt="Flexbox 1">
+					<br>
+					<small>Figura 2. Dirección en flexbox. Autoría propia</small>
+				</p>
+				</p>
+				<br>
+				<strong class="title_article">
+					flex-wrap
+				</strong>
+				<p>
+					Cuyo valor afecta a cómo se distribuyen los elementos en fila y, por consiguiente, a su tamaño. Los posibles
+					valores son:
+				<ul>
+					<li>
+						flex-wrap:nowrap; Los elementos se muestran en línea, en una sola fila, y su tamaño se ajusta al
+						contenedor siempre y cuando la suma de todos ellos sea mayor o igual que el 100% de la anchura del
+						contenedor. Si es inferior, se siguen mostrando en línea pero conservan su tamaño. Este es el valor por
+						defecto, y como veíamos en el ejemplo 1, aunque la anchura de los elementos es el 25% del contenedor, todos
+						se muestran en línea modificando su tamaño para que la suma total no sea superior al 100% de su
+						contenedor.
+					</li>
+					<li>
+						flex-wrap:wrap; Los elementos se muestran en línea, pero si su anchura supera la del contenedor, se
+						distribuyen en varias filas.
+					</li>
+					<li>
+						flex-wrap:wrap-reverse; Los elementos se muestran en línea, pero si su anchura supera la del contenedor, se
+						distribuyen en varias filas, y además lo hacen en orden inverso al de maquetación.
+					</li>
+				</ul>
+				<strong>Por ejemplo:</strong>
+				<p style="text-align: center;">
+					<img src="../fase2/images/flex2.png" alt="Flexbox 2">
+					<br>
+					<small>Figura 3. Distribución en flexbox. Autoría propia</small>
+				</p>
+				</p>
+				<br>
+				<strong class="title_article">
+					flex-flow
+				</strong>
+				<p>
+					Se pueden especificar las anteriores propiedades en una sola mediante "flex-flow” de la siguiente forma:
+					<br>
+					<strong>flex-flow: flex-direction flex-wrap</strong>
+					<br><br>
+					<strong>Por ejemplo:</strong>
+				<pre>
+							<code>
+					.contenedor{
+						display:flex;
+						flex-flow:row-reverse wrap-reverse;
+					}
+							</code>
+						</pre>
+				</p>
+				<br>
+				<strong class="title_article">
+					justify-content
+				</strong>
+				<p>
+					En cuanto a la alineación horizontal de los elementos en Flexbox, existe la propiedad "justify-content", que
+					alinea los elementos a lo largo del eje principal (main axis) de su contenedor, pero a diferencia de la
+					alineación de un texto.
+				<ul>
+					<li>
+						justify-content:flex-start; Alinea los elementos en horizontal desde el inicio de la dirección del eje
+						principal de su contenedor (partiendo desde el inicio de la línea). Este es el valor por defecto. Es
+						importante destacar que, como veremos más adelante, la dirección establecida en "flex-direction” afecta a
+						la alineación.
+					</li>
+					<li>
+						justify-content:flex-end; Alinea los elementos en horizontal desde el final de la dirección del eje
+						principal de su contenedor (partiendo desde el final de la línea)
+					</li>
+					<li>
+						justify-content:center; Alinea los elementos al centro del eje principal de su contenedor. Similar a un
+						texto alineado al centro.
+					</li>
+					<li>
+						justify-content:space-between; Alinea los elementos justificándolos a lo largo del eje principal de su
+						contenedor. Similar a un texto justificado. Los elementos laterales se pegan a los extremos y el resto se
+						distribuyen a lo largo del eje principal dejando el mismo espacio entre ellos.
+					</li>
+					<li>
+						justify-content:space-around; Alinea los elementos distribuyendo sus centros de forma horizontal a lo largo
+						del eje principal de su contenedor, dejando el mismo espacio lateral de separación al comienzo, al final y
+						entre ellos.
+					</li>
+				</ul>
+				<strong>Por Ejemplo: </strong>
+				<pre>
+							<code>
+					.contenedor{
+						display:flex;
+						flex-direction:row;
+						flex-wrap:wrap;
+						justify-content:center;
+					}
+							</code>
+						</pre>
+				<p style="text-align: center;">
+					<img src="../fase2/images/flex3.png" alt="Flexbox 3" />
+					<br>
+					<small>Figura 4. Justificación del contenido en flexbox. Autoría propia</small>
+				</p>
+				</p>
+				<br>
+				<strong class="title_article">
+					align-items | align-self | align-content
+				</strong>
+				<p>
+					La alineación vertical se realiza a través del llamado "eje transversal” (cross axis), y para ello se
+					utilizan tres propiedades diferentes, "align-items”, "align-self” y "align-content”.
+				<ul>
+					<li>
+						align-items: establece la alineación predeterminada para todos los elementos del contenedor, incluidos los
+						elementos independientes.
+					</li>
+					<li>
+						align-self: permite alinear elementos independientes del contenedor.
+					</li>
+					<li>
+						align-content: alinea las líneas/filas de elementos de un contenedor.
+					</li>
+				</ul>
+				<strong>Por Ejemplo: </strong>
+				<p style="text-align: center;">
+					<img src="../fase2/images/align.png" alt="Alineación en flexbox">
+					<br>
+					<small>Figura 5. Alineación del contenido en flexbox. Recuperado de
+						https://www.yunbitsoftware.com/blog/wp-content/uploads/2017/03/imagen_flexbox_align.png</small>
+				</p>
+				<p>
+					<strong>A continuación se encuentran los valores que pueden tomar cada una de ellas (los valores de
+						"align-items” son válidos para "align-self”):</strong>
+				<ul>
+					<li>
+						align-items:stretch: Valor por defecto. La altura de los elementos se ajusta al tamaño del contenedor (o
+						fila), dividiendo el espacio sobrante entre todos los elementos por igual.
+					</li>
+					<li>
+						align-items:flex-start: Alinea en vertical los elementos desde el inicio de la dirección del eje
+						transversal de su contenedor (al igual que ocurría en horizontal). También afecta el valor de
+						"flex-direction” al sentido de la alineación vertical.
+					</li>
+					<li>
+						align-items:flex-end: Alinea en vertical los elementos desde el final de la dirección del eje transversal
+						de su contenedor (al igual que ocurría en horizontal).
+					</li>
+					<li>
+						align-items:center: Alinea al centro vertical los elementos a lo largo del eje transversal de su contenedor.
+					</li>
+					<li>
+						align-items:baseline: Alinea en vertical las "líneas base” de los elementos a lo largo del eje transversal
+						de su contenedor. Para poder comprender este ejemplo, vamos a añadir algunos estilos diferentes a los
+						elementos:
+					</li>
+				</ul>
+				</p>
+				<p>
+					<strong>Los valores disponibles para la propiedad "align-content” son los siguientes:</strong>
+				<ul>
+					<li>
+						align-content:stretch: Valor por defecto. La altura de las filas se ajustan al tamaño del contenedor,
+						dividiendo el espacio sobrante entre todas las líneas por igual.
+					</li>
+					<li>
+						align-content:flex-start: Alinea en vertical las filas desde el inicio de la dirección del eje transversal
+						de su contenedor.
+					</li>
+					<li>
+						align-content:flex-end: Alinea en vertical las filas desde el final de la dirección del eje transversal de
+						su contenedor.
+					</li>
+					<li>
+						align-content:center: Alinea al centro vertical las filas a lo largo del eje transversal de su contenedor.
+					</li>
+					<li>
+						align-content:space-between: Alinea las filas justificándolas a lo largo del eje transversal de su
+						contenedor. Similar a un texto justificado en vertical. Las filas superior e inferior se pegan a sus
+						extremos y el resto se distribuyen a lo largo del eje transversal dejando el mismo espacio entre ellas.
+					</li>
+					<li>
+						align-content:space-around: Alinea las líneas distribuyendo sus centros de forma vertical a lo largo del
+						eje transversal de su contenedor, dejando el mismo espacio vertical de separación en la parte superior,
+						inferior y entre ellos.
+					</li>
+				</ul>
+				</p>
+				</p>
+				<br>
+				<strong class="title_article">
+					order
+				</strong>
+				<p>
+					Posiciona un elemento en el orden asignado por el número entero especificado en la propiedad, teniendo en
+					cuenta el valor asignado al resto de elementos, cuyo valor por defecto es 0 (cero). Esto significa que, a no
+					ser que se especifique un orden a todos los elementos, cualquier número aplicado a un solo elemento lo
+					llevará a la última posición. Esto es debido a que por defecto todos tienen cero”.
+				</p>
+				<br>
+				<strong class="title_article">
+					flex
+				</strong>
+				<p>
+					se aplica a los elementos del contenedor y que a su vez se estructura de tres propiedades diferentes y que se
+					pueden presentar por separado, "flex- grow”, "flex-shrink” y "flex-basis”, y se define de la siguiente forma:
+					<br><br>
+					<strong>flex: none | &#60;flex-grow&#62; &#60;flex-shrink&#62; &#60;flex-basis&#62;</strong>
+					<br><br>
+					Donde:
+				<ul>
+					<li>
+						flex-grow:&#60;número&#62;: Determina el factor de incremento de tamaño de uno o varios elementos en
+						relación al resto teniendo en cuenta el espacio "vacío” o "libre” entre ellos. Como espacio "vacío/libre”
+						nos referimos al espacio que no ocupan los elementos en relación a su fila. Cuando este valor se omite, se
+						establece en 1.
+						<p style="text-align: center;">
+							<img src="../fase2/images/flexgrow.jpg" alt="flex-grow">
+							<br>
+							<small>Figura 6. Ejemplo del uso de flex-grow. Recuperado de
+								https://www.code-boost.com/img/flex-example8.jpg</small>
+						</p>
+					</li>
+					<li>
+						flex-shrink:&#60;número&#62;: Determina el factor de disminución de tamaño de uno o varios elementos en
+						relación al resto teniendo en cuenta el espacio "vacío” o "libre” entre ellos. Cuando este valor se omite,
+						se establece en 1.
+						<p style="text-align: center;">
+							<img src="../fase2/images/flexshrink.jpg" alt="flex-shrink">
+							<br>
+							<small>Figura 7. Ejemplo del uso de flex-shrink. Recuperado de
+								https://www.code-boost.com/img/flex-example9.jpg</small>
+						</p>
+					</li>
+					<li>
+						flex-basis: auto | 0 | &#60;width&#62;: Especifíca la base flexible, la cual es el tamaño inicial de un
+						elemento flexible. Ésta propiedad determina el tamaño de una caja de contenidos a no ser que se haya
+						especificado de otra forma usando box-sizing.
+						<p style="text-align: center;">
+							<img src="../fase2/images/flexbasis.jpg" alt="flex-basis">
+							<br>
+							<small>Figura 8. Ejemplo del uso de flex-basis. Recuperado de
+								https://www.code-boost.com/img/flex-example10.jpg</small>
+						</p>
+					</li>
+				</ul>
+				</p>
+				</p>
+				<p>
+					<strong>A continuación se presenta un video para complementar el tema:</strong>
+				</p>
+				<div class="text-center">
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/RHQiW4IAqRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</section>
+		<aside>
+			<iframe
+				src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUniversidadUNAD%2F&tabs=timeline&width=400&height=560&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=314534035620750"
+				width="100%" height="560" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+				allowfullscreen="true"
+				allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+		</aside>
+	</div>
+	<footer>
+		<img src="./images/unad.png" alt="Logo UNAD">
+		<span>Flexbox y CSS Grid, David Garzón Vélez 2021</span>
+	</footer>
+</body>
+
+</html>
