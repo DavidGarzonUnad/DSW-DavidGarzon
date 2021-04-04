@@ -134,6 +134,8 @@ pre {
 	font-style: oblique;
 	font-size: 16px;
 	font-weight: 500;
+	white-space: break-spaces;
+	padding: 10px;
 }
 .pagina_inicio p {
 	font-size: 22px;
