@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="author" content="David Garzón Vélez" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="Desarrollo web, Diseño web, Css, Flexbox, UNAD" />
+	<meta name="description" content="Aquí podrás aprender los conceptos generales de Flexbox y CSS Grid" />
+	<title>Fase 4 Flexbox, CSS Grid</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina_inicio">
+	<header>
+		<h1>
+			<a href="./index.html">Flexbox, CSS Grid</a>
+		</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="./index.html">Inicio</a>
+				</li>
+				<li>
+					<a href="#">Temas</a>
+					<ul class="submenu">
+						<li><a href="./flexbox.html">Flexbox</a></li>
+						<li><a href="./css-grid.html">CSS Grid</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Recursos digitales</a>
+					<ul class="submenu">
+						<li><a href="./recurso-aprendizaje-1.html">Recurso 1</a></li>
+						<li><a href="./recurso-aprendizaje-2.html">Recurso 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Aprendizaje</a>
+					<ul class="submenu">
+						<li><a href="./apropiacion-aprendizaje-flexbox.html">Actividad 1</a></li>
+						<li><a href="./apropiacion-aprendizaje-css-grid.html">Actividad 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="./acerca-del-autor.html">Autor</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="content">
+		<section>
+			<h2>Propósito del sitio</h2>
+			<p>
+				A partir de contenidos multimedia y explicaciones visuales, se quiere mostrar estas dos formas de maquetar sitios web, a través del uso de Flexbox o CSS Grid se puede realizar de una manera mucho más facil y poderosa la organizacion de los elementos html a través de propiedades CSS, con las cuales las páginas tendrán mayor flexibilidad en varios tipos de pantalla, y se lograrán realizar diseños para todos los gustos de acuerdo a la creatividad que tengamos.
+			</p>
+			<hr />
+			<h3 id="flexbox">Flexbox</h3>
+			<article>
+				<p>
+					En flexbox tenemos un contenedor y uno o varios hijos. El contenedor
+					es el elemento al que le vamos a indicar que se ponga en disposición
+					flex. Esto hará que todos los elementos hijo inmediatos se coloquen a
+					lo largo de un eje principal.
+				</p>
+				<p>
+					En cuanto a compatibilidad, Flexbox es actualmente compatible con los
+					navegadores web más importantes y diferentes versiones de los mismos.
+				</p>
+				<p>
+					El W3C (World Wide Web Consortium) define a esta estructura como un
+					"flujo flexible” de elementos en dirección
+					(arriba/abajo/izquierda/derecha) y tamaño (anchura/altura) según los
+					ejes principal (horizontal) y transversal (vertical).
+				</p>
+			</article>
+			<hr />
+			<h3 id="cssgrid">CSS Grid</h3>
+			<article>
+				<p>
+					Trabaja con el diseño de cuadrícula aplicando reglas CSS tanto a un elemento principal (que se convierte en el
+					contenedor de cuadrícula) como a los elementos secundarios de ese elemento (que se convierten en elementos de
+					cuadrícula).
+				</p>
+				<p>
+					Al igual que las tablas, el grid layout permite a un autor alinear elementos en columnas y filas. Sin embargo, con CSS grid son posibles muchos más diseños y de forma más sencilla que con las tablas. Por ejemplo, los elementos secundarios de un contenedor de cuadrícula podrían posicionarse para que se solapen y se superpongan, de forma similar a los elementos posicionados en CSS.
+				</p>
+			</article>
+		</section>
+		<aside>
+			<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUniversidadUNAD%2F&tabs=timeline&width=400&height=560&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=314534035620750" width="100%" height="560" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+		</aside>
+	</div>
+	<footer>
+		<img src="./images/unad.png" alt="Logo UNAD">
+		<span>Flexbox y CSS Grid, David Garzón Vélez 2021</span>
+	</footer>
+</body>
+
+</html>
